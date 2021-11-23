@@ -1,0 +1,65 @@
+﻿@model IEnumerable<UCP1_praktikum.Models.Penduduk>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Data Kelurahan</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Nama")
+            </th>
+            <th>
+                @Html.DisplayName("Nama Dusun")
+            </th>
+            <th>
+                @Html.DisplayName("Nomor KK")
+            </th>
+            <th>
+                @Html.DisplayName("Alamat")
+            </th>
+            <th>
+                @Html.DisplayName("Gender")
+            </th>
+            <th>
+                @Html.DisplayName("Status")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nama)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NamaDusun)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoKk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Alamat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdGenderNavigation.IdGender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdStatusNavigation.IdStatus)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdData"><i class="fas fa-pencil-alt"></i></a> |
+                <a asp-action="Details" asp-route-id="@item.IdData"><i class="fas fa-info"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.IdData"><i class="fas fa-trash-alt"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
